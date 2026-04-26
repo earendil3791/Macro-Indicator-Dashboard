@@ -57,7 +57,9 @@ with tab_basic:
         y2 = load_series("yield_2y")
         y10 = load_series("yield_10y")
         y30 = load_series("yield_30y")
+        
         yields = pd.concat([y1, y2, y10, y30], axis=1).dropna()
+        yields.columns = ["1Y", "2Y", "10Y", "30Y"]  # <-- Add this line
         st.line_chart(yields)
 
         st.subheader("Yield Curve (10Y - 2Y)")
